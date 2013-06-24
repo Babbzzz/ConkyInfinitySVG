@@ -358,7 +358,7 @@ ${offset 830}${font Monospace:size=9}${color7}${execi 150 ~/.conky/scripts/mail/
 # Positioning eset for static text examples below
 ${voffset 60}
 # Static text example: Logo
-${offset 120}${color}${font Ubuntu:pixelsize=20}${color7}Ubuntu${color} 13.04
+${offset 120}${color}${font Ubuntu:pixelsize=20}${color7}'YOUR OS'${color} 'YOUR OS VERSION'
 # Static text example: Multi-line
 #${offset 120}$font${color 6f6f6f}random text can go here
 #${offset 120}and here...
