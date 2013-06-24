@@ -39,12 +39,12 @@ As best I can tell, the following people had a hand in the creation of this them
 4. Open ~/.conkyrc in your favorite editor and adjust the screen resolution:
 	- minimum_size 1920 1080
 
-5. Replace in ~/.conkyrc 'YOUR EMAIL DOMAIN HERE' with your gmail username. Eg: me-email
+5. Replace in ~/.conkyrc 'YOUR EMAIL DOMAIN HERE' with your gmail username. Eg: myemail
 
 6. Open ~/.conky/scripts/mail/userpwd.py and edit with your information:
 	- Your can use base64 from any Linux terminal:
-		~$ echo -n "myemail@gmail.com" | base64
-		~$ echo -n "my pass" | base64
+		- ~$ echo -n "myemail@gmail.com" | base64
+		- ~$ echo -n "my pass" | base64
 
 7. (optional) By default setup assumes we will set up Compiz manually for partial transparency of the conky output (step 9 below). If you are **not** using a compositing window-manager such as compiz, you can make the conky window transparent by altering the "own_window_type" and "own_window_transparent" settings in ~/.conkyrc.  Included in .conkyrc are three examples: manual with Compiz, automatic with a compositor, and automatic using conky directly.  Uncomment as desired if you wish to change this.
 
