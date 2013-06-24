@@ -33,17 +33,17 @@ As best I can tell, the following people had a hand in the creation of this them
 	- Other: see your local documentation or try [the Conky documentation](http://conky.sourceforge.net/documentation.html).
 2. Extract the ConkyInfinitySVG distribution into its own directory somewhere.
 	
-3. Instal Theme
-	-Automated Installation:
-		- Execute ./setUp.sh:
+3. Install Theme:
+	- Automated Installation:
+		- Execute ./setUp.sh: 
 			- ~$ bash ./setUp.sh
 		- Go to 8. 
-	-Manual Installation:
+	- Manual Installation:
 		- Go to 4.
 	
 4. Copy .conkyrc, and .conky/ to your home directory:
-	- cp .conkyrc ~/
-	- cp -r .conky ~/
+	- ~$ cp .conkyrc ~/
+	- ~$ cp -r .conky ~/
 
 5. Open ~/.conkyrc in your favorite editor and adjust the screen resolution:
 	- minimum_size 1920 1080
@@ -63,8 +63,8 @@ As best I can tell, the following people had a hand in the creation of this them
 9. (optional) Check .conky/scripts/haunted.lua for any additional adjustments required for your screen resolution.
 
 10. Now you are ready to run conky.  Open a terminal and run the following:
-	- chmod a+x ~/.conky/startconky.sh
-	- sh ~/.conky/startconky.sh
+	- ~$ chmod a+x ~/.conky/startconky.sh
+	- ~$ sh ~/.conky/startconky.sh
 	- (Conky will start after 5 seconds.)
 
 11. Add ~/.conky/startconky.sh as a startup application.
