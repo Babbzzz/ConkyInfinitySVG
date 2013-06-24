@@ -39,20 +39,27 @@ As best I can tell, the following people had a hand in the creation of this them
 4. Open ~/.conkyrc in your favorite editor and adjust the screen resolution:
 	- minimum_size 1920 1080
 
-5. (optional) By default setup assumes we will set up Compiz manually for partial transparency of the conky output (step 9 below). If you are **not** using a compositing window-manager such as compiz, you can make the conky window transparent by altering the "own_window_type" and "own_window_transparent" settings in ~/.conkyrc.  Included in .conkyrc are three examples: manual with Compiz, automatic with a compositor, and automatic using conky directly.  Uncomment as desired if you wish to change this.
+5. Replace in ~/.conkyrc 'YOUR EMAIL DOMAIN HERE' with your gmail username. Eg: me-email
 
-6. (optional) Check .conky/scripts/haunted.lua for any additional adjustments required for your screen resolution.
+6. Open ~/.conky/scripts/mail/userpwd.py and edit with your information:
+	- Your can use base64 from any Linux terminal:
+		~$ echo -n "myemail@gmail.com" | base64
+		~$ echo -n "my pass" | base64
 
-7. Now you are ready to run conky.  Open a terminal and run the following:
+7. (optional) By default setup assumes we will set up Compiz manually for partial transparency of the conky output (step 9 below). If you are **not** using a compositing window-manager such as compiz, you can make the conky window transparent by altering the "own_window_type" and "own_window_transparent" settings in ~/.conkyrc.  Included in .conkyrc are three examples: manual with Compiz, automatic with a compositor, and automatic using conky directly.  Uncomment as desired if you wish to change this.
+
+8. (optional) Check .conky/scripts/haunted.lua for any additional adjustments required for your screen resolution.
+
+9. Now you are ready to run conky.  Open a terminal and run the following:
 	- chmod a+x ~/.conky/startconky.sh
 	- sh ~/.conky/startconky.sh
 	- (Conky will start after 5 seconds.)
 
-8. Add ~/.conky/startconky.sh as a startup application.
+10. Add ~/.conky/startconky.sh as a startup application.
 	- Ubuntu: Dash > (search) Startup Applications > Add
 	- Other: see your location documentation to add this as a startup application.
 
-9. We can use Compiz to make the conky window partially transparent.  This can be accomplished via ccsm - CompizConfig Settings Manager, use with caution (it is fairly easy to render your desktop unusable with ccsm).  If use set up conky to handle transparency in step 5, skip this step.
+11. We can use Compiz to make the conky window partially transparent.  This can be accomplished via ccsm - CompizConfig Settings Manager, use with caution (it is fairly easy to render your desktop unusable with ccsm).  If use set up conky to handle transparency in step 5, skip this step.
 	- If not installed, install compizconfig-settings-manager 
 	- Run ccsm
 	- Go to: Accessibility > Opacity, Brightness and Saturation > (enable if not already)
@@ -60,13 +67,13 @@ As best I can tell, the following people had a hand in the creation of this them
 	- In "Windows" enter "name=Conky" (exactly as shown -- do not just type "Conky")
 	- In "Window values" enter "66" or so (higher for less transparent, lower for more)
 
-10. Tweak the background image if you wish.
+12. Tweak the background image if you wish.
 	- A vector based version of .conky/background.png is available for Inkscape in: images/background.svg
 	- If you edit the svg, simply export the "page" at 90dpi and replace: .conky/background.png
 
-11. Extras - Included in extras/terminator/config is a config file for the "Terminator" terminal program.  This sets up Terminator with a color scheme that matches this Conky theme.  To install it, back up your existing terminator configuration (~/.config/terminator/config) and copy in the one from extras/terminator/config.  ** If you have your own terminator config, you may wish to manually merge the title colors and profile colors from the supplied file into your own configuration.
+13. Extras - Included in extras/terminator/config is a config file for the "Terminator" terminal program.  This sets up Terminator with a color scheme that matches this Conky theme.  To install it, back up your existing terminator configuration (~/.config/terminator/config) and copy in the one from extras/terminator/config.  ** If you have your own terminator config, you may wish to manually merge the title colors and profile colors from the supplied file into your own configuration.
 
-12. Other notes:
+14. Other notes:
 	- The following scripts were written separately and currently are not used, but are included for example.
 		- .conky/examples/cpu
 		- .conky/examples/mail

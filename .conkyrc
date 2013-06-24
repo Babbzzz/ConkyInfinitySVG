@@ -353,7 +353,7 @@ ${offset 755}${font Monospace:size=9}${color6} Top (RAM):${tab 2}${offset 9}${co
 ${offset 635}${voffset 150}${color}${font Santana:size=11:style=Bold}IP Address : ${addr eth0}
 ${offset 635}${color}${font Monospace:size=9}TCP Connections: ${tcp_portmon 1 65535 count}
 ${offset 635}${font Monospace:size=9}${color4}Down: ${offset 9}${color}${downspeed eth0}/s ${tab 4}${color4}Up:${tab 4}${color}${upspeed eth0} /s
-${offset 830}${voffset -155}${color}${font Santana:size=11:style=Bold}Gmail:${color} YOUR EMAIL DOMAIN HERE
+${offset 830}${voffset -155}${color}${font Santana:size=11:style=Bold}Gmail:${color} 'YOUR EMAIL DOMAIN HERE'
 ${offset 830}${font Monospace:size=9}${color7}${execi 150 ~/.conky/scripts/mail/gmail.py}
 # Positioning eset for static text examples below
 ${voffset 60}
