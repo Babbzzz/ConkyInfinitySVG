@@ -1,18 +1,20 @@
-# InfinitySVG: A Theme for Conky
-
+# InfinitySVG-Mail: A Theme for Conky
 
 ## About
 
-InfinitySVG is a theme for the "conky" system monitor for X. It is based on the Infinity theme by Harshit Yadav.
+InfinitySVG-Mail is a theme for the "conky" system monitor for X. It is based on the InfinitySVG theme by Eric Weik.
 
-![InfinitySVG screenshot](https://github.com/circumjacence/ConkyInfinitySVG/raw/master/images/InfinitySVG-screencap-960w.png)
+![InfinitySVG-Mail screenshot](https://github.com//PabloAng/ConkyInfinitySVG/raw/master/images/InfinityMail-screenshot.png)
 
 
 ## Acknowledgements
 
 As best I can tell, the following people had a hand in the creation of this theme.  Thank you!
 
-- InfinitySVG by: Eric Weik
+- InfinirtySVG-Mail by: Pablo Angelani
+- Original Conky Google Now:
+	- [http://satya164.deviantart.com/art/Conky-Google-Now-366545753](http://satya164.deviantart.com/art/Conky-Google-Now-366545753)
+- Original InfinitySVG by: Eric Weik
 	- [http://www.newriversdigital.com/](http://www.newriversdigital.com/)
 - Vector icons used in the background: "Iconic" by P.J. Onori
 	- [http://somerandomdude.com/work/iconic/](http://somerandomdude.com/work/iconic/)

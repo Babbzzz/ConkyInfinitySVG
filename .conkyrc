@@ -1,13 +1,14 @@
 ###############################################################################
 #	Conky Theme	: InfinitySVG
 #
-#	Updates and SVG by:				Eric Weik
-#	Original Infinity theme by:		Harshit Yadav
-#	Includes lua code:				Clock Rings by londonali1010 (2009)
+#	Updates and SVG by:					Pablo Angelani
+#	Original Updates Infinity and SVG:	Eric Weik
+#	Original Infinity theme by:			Harshit Yadav
+#	Includes lua code:					Clock Rings by londonali1010 (2009)
 #	Feel Free to distribute
 #	For Installation Instructions see README
 #
-#	Colors from haunted.lua and .conkyrc:
+#	Colors from haunted .lua and .conkyrc:
 #	b7b7b7 (light grey)
 #	6f6f6f (medium grey)
 #	2c2c2c (dark grey)
@@ -26,10 +27,12 @@
 ###############################################################################
 
 
+#########################################
+############# Conky settings ############
+#########################################
 
-## Conky settings
 background yes
-update_interval 5.0
+update_interval 1
 
 cpu_avg_samples 2
 net_avg_samples 2
@@ -40,14 +43,13 @@ double_buffer yes
 no_buffers yes
 
 text_buffer_size 2048
-
 #imlib_cache_size 0
 
-default_color b7b7b7
+## 
 
-
-
-## Window specifications
+#########################################
+######### Window specifications #########
+#########################################
 
 # Allow conky to handle transparency -- all or nothing
 #own_window yes
@@ -57,7 +59,7 @@ default_color b7b7b7
 # Allow compiz to handle transparency manually (you will need to add Conky to compiz)
 own_window yes
 own_window_type normal
-own_window_transparent no
+own_window_transparent yes
 own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
 
 # Allow conky to handle transparency (with percentages) with a compositor
@@ -69,14 +71,11 @@ own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
 #own_window_argb_value 70	# make the background semi-transparent
 
 
+## This Resolution is set according to the sreen resolution of 1360x768
+## Adjust Accoring to yours
 
-## This Resolution is set according to the screen resolution of 1920 1080
-## Adjust According to yours
-
-#minimum_size 800 560
-#maximum_width 1366
-
-minimum_size 1920 1080
+minimum_size 1360 576
+maximum_width 1366
 
 #alignment top_left
 alignment top_right
@@ -84,33 +83,45 @@ gap_x 0
 gap_y 0
 
 
-
-## Graphics settings
+#########################################
+########### Graphics settings ###########
+#########################################
 border_inner_margin 0
 border_outer_margin 0
 
 draw_shades no
 draw_outline no
 draw_borders no
-draw_graph_borders yes
-
-
+draw_graph_borders no
 
 ## Text settings
+use_spacer yes
 use_xft yes
 xftfont caviar dreams:size=8
 xftalpha 0.5
+
 uppercase no
 
-temperature_unit fahrenheit
-#temperature_unit celsius
+#temperature_unit fahrenheit
+temperature_unit celsius
 
+# Color settings
+default_color eaeaea
+
+color1 b7b7b7	#(light grey)
+color2 6f6f6f	#(medium grey)
+color2 2c2c2c	#(dark grey)
+color3 4a89a7	#(teal / blue)
+color4 e83737	#(red)
+color5 ebff46	#(yellow)
+color6 46a646	#(green)
+color7 f4732d	#(orange)
+color8 ffa300	#(bright orange)
 
 
 ## Lua: load clock rings.
 lua_load ~/.conky/scripts/haunted.lua
 lua_draw_hook_pre clock_rings
-
 
 
 ## Possible variables to be used:
@@ -247,7 +258,7 @@ lua_draw_hook_pre clock_rings
 # 	running_processes               Running processes (not sleeping),        
 # 					requires Linux 2.6                       
 # 	shadecolor        (color)       Change shading color                     
-# 	stippled_hr       (space),      Stippled (dashed) horizontal line        
+# 	stippled_hr       (space),      Stippled (dfontashed) horizontal line        
 # 			(height)        
 # 	swapbar           (height)      Bar that shows amount of swap in use     
 # 	swap                            Amount of swap in use                    
@@ -299,39 +310,55 @@ lua_draw_hook_pre clock_rings
 
 
 
-# stuff after 'TEXT' will be formatted on screen
+## Adjust these fields according to the your screen size i have modded them for 1366X768
+
 TEXT
-# Clock and header
- ${offset 700}${color EAEAEA}${font GE Inspira:pixelsize=120}${time %H:%M}${font}${voffset -84}${voffset 10}${color FFA300}${font GE Inspira:pixelsize=42}${time %d} ${voffset -15}${color EAEAEA}${font GE Inspira:pixelsize=22}${time  %B} ${time %Y}${font}${voffset 124}${font GE Inspira:pixelsize=58}${offset -547}${time %A}${font}
-${offset 720}${voffset -100}${font Ubuntu:pixelsize=10}${color FFA300}HD ${offset 9}$color${fs_free /} / ${fs_size /}${offset 30}${color FFA300}RAM ${offset 9}$color$mem / $memmax${offset 30}${color FFA300}CPU ${offset 9}$color${cpu cpu0}%
-${voffset 10}${offset 295}${color 2c2c2c}${hr 4}
+## Date
+${offset 600}${color}${font GE Inspira:pixelsize=120}${time %H:%M}${font}${voffset -84}${voffset 10}${color8}${font GE Inspira:pixelsize=42}${time %d} ${voffset -15}${color}${font GE Inspira:pixelsize=22}${exec echo $(echo $(date +%B) | cut -c1 | tr '[a-z]' '[A-Z]')$(echo $(date +%B) | cut -c2-)} ${time %Y}${font}
+${voffset 124}${offset 350}${font GE Inspira:pixelsize=54}${exec echo $(echo $(date +%A) | cut -c1 | tr '[a-z]' '[A-Z]')$(echo $(date +%A) | cut -c2-)}${font}
+## 
+${offset 620}${voffset -100}${font Ubuntu:pixelsize=12}${color8}HD ${offset 9}${color 4a89a7}${exec df -h | grep "/dev/sd*"  | awk '{ SUM += $3} END { print SUM "Gib" }'} / ${exec df -h | grep "/dev/sd*"  | awk '{ SUM += $2} END { print SUM "Gib" }'}${offset 30}${color8}RAM ${offset 9}${color 4a89a7}$mem / $memmax${offset 30}${color8}CPU1 ${offset 9}${color3}${cpu cpu0}%
+${offset 955}${color8}CPU2 ${offset 9}${color3}${cpu cpu1}%
+${offset 980}${color8}CPU3 ${offset 9}${color3}${cpu cpu2}%
+${voffset -5}${offset 290}${color}${hr 2}
 ${image ~/.conky/background.png}
 
+##WEATHER 
+${voffset -90}
+${execi 300 curl -s "http://weather.yahooapis.com/forecastrss?w=12813015&u=c" -o ~/.cache/weather.xml}
+${offset 1110}${font Open Sans Light:size=15}${color 000000}${execi 300 grep "yweather:location" ~/.cache/weather.xml | grep -o "city=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}, ${execi 300 grep "yweather:location" ~/.cache/weather.xml | grep -o "country=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${font}
+${font Open Sans Light:size=70}${color}${alignr}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}°${font}${voffset -35}
+${execi 300 cp -f ~/.conky/scripts/weather/$(grep "yweather:condition" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*").png ~/.cache/weather.png}
 
-# Disk usage node
-${offset 120}${voffset 223}${color 4a89a7}${font Santana:size=8:style=Bold}root$color${font Santana:size=8} : ${offset 16}${fs_used /}/${fs_size /}
-${offset 120}${voffset 12}${color 46a646}${font Santana:size=8:style=Bold}home$color${font Santana:size=8} : ${offset 7}${fs_used /home}/${fs_size /home}$font
-${offset 120}${voffset 12}${color e83737}${font Santana:size=8:style=Bold}swap$color${font Santana:size=8} : ${offset 10}${swap} / ${swapfree}$font
-# "Home" node (kernel, etc.)
-${offset 583}${voffset -108}$color${font Santana:size=9:style=Bold}Linux ${kernel} kernel
-${offset 585}${voffset 0}${color 4a89a7}${font Santana:size=8}Uptime : ${offset 9}$color${uptime}
-# "User" node (whoami, top process, etc.)
-${offset 833}${voffset -78}$color${font Santana:size=9:style=Bold}${exec whoami}@${nodename}
-${offset 835}${voffset 0}$color${font Santana:size=8}${color 46a646}Top (cpu) :  ${offset 9}$color${top name 5} ${top cpu 5}
-${offset 835}${voffset 0}$color${font Santana:size=8}${color 46a646}Top (RAM) : ${offset 9}$color${top_mem name 5} ${top_mem mem 5}
-${offset 835}${voffset 0}${color 6f6f6f}CPU Usage (${cpu}%) :
-${offset 835}${voffset -2}$color${font Santana:size=8}${color 2c2c2c}${cpugraph 32,200 2c2c2c 46a646}
-# "Network" node (IP, connections, etc.)
-${offset 713}${voffset 88}$color${font Santana:size=9:style=Bold}IP Address : ${addr eth0}
-${offset 715}${voffset 0}$color${font Santana:size=8}TCP Connections : ${tcp_portmon 1 65535 count}
-${offset 715}${voffset 0}${font Santana:size=8}${color f4732d}Down : ${offset 9}$color${downspeed eth0}/s ${offset 8}${color ebff46}Up : ${offset 9}$color${upspeed eth0} /s
-${offset 715}${voffset 0}${color 6f6f6f}${font Santana:size=8}Interface eth0 Usage :
-${offset 715}${voffset -2}$color${font Santana:size=8}${color 2c2c2c}${downspeedgraph eth0 32,200 b7b7b7 f4732d}
-${offset 715}${voffset -5}${color 2c2c2c}${upspeedgraph eth0 32,200 b7b7b7 ebff46}
+${offset 1055}${font Ubuntu:pixelsize=14}${color}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | ~/.conky/scripts/weather/traductor.py | tr '[a-z]' '[A-Z]'}
+${voffset -25}
+
+${offset 1085}${font Ubuntu:pixelsize=12}${color}${execi 300 grep "yweather:wind" ~/.cache/weather.xml | grep -o "speed=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${execi 300 grep "yweather:units" ~/.cache/weather.xml | grep -o "speed=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}
+${offset 1085}${font Ubuntu:pixelsize=12}${execi 300 grep "yweather:atmosphere" ~/.cache/weather.xml | grep -o "humidity=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}%
+${image ~/.cache/weather.png -p 1055,190 -s 60x60}
+${image ~/.conky/scripts/weather/wind.png -p 1055,285 -s 15x15}
+${image ~/.conky/scripts/weather/humidity.png -p 1055,305 -s 15x15}
+${voffset -175}
+###
+
+##FILE SYSTEM
+${offset 120}${voffset 198}${font Monospace:size=11:style=Bold}${color 4a89a7}root:${tab 4}${font Santana:size=11}${color}${fs_used /}/${fs_size /}
+${offset 120}${voffset 7}${color6}${font Monospace:size=11:style=Bold}home:${tab 4}${font Santana:size=11}${color}${fs_used /home}/${fs_size /home}$font
+${offset 120}${voffset 7}${color4}${font Monospace:size=11:style=Bold}swap:${tab 4}${font Santana:size=10}${color} ${swap}/${swapfree}
+${offset 500}${voffset -110}${font Santana:size=10}${color}Linux ${kernel} kernel
+${offset 500}${font Monospace:size=9}${color 4a89a7}Uptime:${color}${uptime}
+${offset 755}${voffset -110}${font Santana:size=12:style=Bold}${color}${exec whoami}@${nodename}
+${offset 755}${font Monospace:size=9}${color6} Top (CPU):${tab 2}${offset 9}${color}${top name 5} ${top cpu 5}
+${offset 755}${font Monospace:size=9}${color6} Top (RAM):${tab 2}${offset 9}${color}${top_mem name 5} ${top_mem mem 5}
+${offset 635}${voffset 150}${color}${font Santana:size=11:style=Bold}IP Address : ${addr eth0}
+${offset 635}${color}${font Monospace:size=9}TCP Connections: ${tcp_portmon 1 65535 count}
+${offset 635}${font Monospace:size=9}${color4}Down: ${offset 9}${color}${downspeed eth0}/s ${tab 4}${color4}Up:${tab 4}${color}${upspeed eth0} /s
+${offset 830}${voffset -155}${color}${font Santana:size=11:style=Bold}Gmail:${color} pablo.angelani
+${offset 830}${font Monospace:size=9}${color7}${execi 150 ~/.conky/scripts/mail/gmail.py}
 # Positioning eset for static text examples below
-${voffset -158}
+${voffset 60}
 # Static text example: Logo
-${offset 120}${color EAEAEA}${font Ubuntu:pixelsize=20}${color f4732d}Ubuntu$color 12.10
+${offset 120}${color}${font Ubuntu:pixelsize=20}${color7}Ubuntu${color} 13.04
 # Static text example: Multi-line
 #${offset 120}$font${color 6f6f6f}random text can go here
 #${offset 120}and here...

@@ -1,19 +1,14 @@
 --[[
-Infinity by Harshit (2012)
-Based on: Ring Meters by londonali1010 (2009)
-
-This script draws percentage meters as rings, and also draws clock hands if you want! It is fully customisable; all options are described in the script. This script is based off a combination of my clock.lua script and my rings.lua script.
-
-IMPORTANT: if you are using the 'cpu' function, it will cause a segmentation fault if it tries to draw a ring straight away. The if statement on line 145 uses a delay to make sure that this doesn't happen. It calculates the length of the delay by the number of updates since Conky started. Generally, a value of 5s is long enough, so if you update Conky every 1s, use update_num>5 in that if statement (the default). If you only update Conky every 2s, you should change it to update_num>3; conversely if you update Conky every 0.5s, you should use update_num>10. ALSO, if you change your Conky, is it best to use "killall conky; conky" to update it, otherwise the update_num will not be reset and you will get an error.
+Infinity by Harshit 
+original by someone i can't remeber the name
+This script draws the left rings of the screen that is with the clock
 
 To call this script in Conky, use the following (assuming that you save this script to ~/scripts/rings.lua):
-	lua_load ~/.conky/scripts/haunted.lua
+	lua_load ~/scripts/haunted.lua
 	lua_draw_hook_pre ring_stats
 	
 Changelog:
-+ v1.0.0 -- (Haunted) Original release (07/06/2012)
-+ v1.1.0 -- EJW: Updated to fix some errors in Ubuntu 12.10 and on desktops.
-+ [All further changes tracked in the git repository.]
++ v1.0 -- Original release (07/06/2012)
 ]]
 
 settings_table = {
@@ -79,7 +74,7 @@ settings_table = {
 		max=100,
 		bg_colour=0xffffff,
 		bg_alpha=0,
-		fg_colour=0x46a646,
+		fg_colour=0xffffff,
 		fg_alpha=0.1,
 		x=165, y=170,
 		radius=70,
@@ -87,33 +82,55 @@ settings_table = {
 		start_angle=60,
 		end_angle=120
 	},
---[[ EJW: Chose one of the following: CPU2 or Battery. --]]
 	{
 		name='cpu',
 		arg='cpu2',
---[[ Uncomment for battery (comment out CPU2 if used)
-		name='battery_percent',
-		arg='BAT1',
---]]
+		max=100,
+		bg_colour=0xffffff,
+		bg_alpha=0,
+		fg_colour=0xebff46,
+		fg_alpha=0.1,
+		x=165, y=170,
+		radius=76,
+		thickness=5,
+		start_angle=60,
+		end_angle=120
+	},
+	{
+		name='cpu',
+		arg='cpu0',
 		max=100,
 		bg_colour=0xffffff,
 		bg_alpha=0.1,
-		fg_colour=0x468626,
+		fg_colour=0x46a646,
+		fg_alpha=0.4,
+		x=165, y=170,
+		radius=84.5,
+		thickness=8,
+		start_angle=60,
+		end_angle=120
+	},
+--[[	{
+		name='battery_percent',
+		arg='BAT1',
+		max=100,
+		bg_colour=0xffffff,
+		bg_alpha=0.1,
+		fg_colour=0xebff46,
 		fg_alpha=0.6,
 		x=165, y=170,
 		radius=72,
 		thickness=11,
 		start_angle=122,
 		end_angle=210
-	},
+	},]]
 	{
---		name='memperc',
-		name='swap',
+		name='memperc',
 		arg='',
 		max=100,
 		bg_colour=0xffffff,
 		bg_alpha=0.1,
-		fg_colour=0xe83737,
+		fg_colour=0x46a646,
 		fg_alpha=0.8,
 		x=165, y=170,
 		radius=83.5,
@@ -127,7 +144,7 @@ settings_table = {
 		max=31,
 		bg_colour=0xffffff,
 		bg_alpha=0.1,
-		fg_colour=0xFFA300,
+		fg_colour=0xebff46,
 		fg_alpha=0.8,
 		x=165, y=170,
 		radius=70,
@@ -141,7 +158,7 @@ settings_table = {
 		max=12,
 		bg_colour=0xffffff,
 		bg_alpha=0.1,
-		fg_colour=0x6f6f6f,
+		fg_colour=0xf4732d,
 		fg_alpha=0.8,
 		x=165, y=170,
 		radius=76,
@@ -164,12 +181,12 @@ settings_table = {
 		end_angle=30
 	},
 		{
-		name='fs_used_perc',
-		arg='/',
+		name='',
+		arg='',
 		max=100,
 		bg_colour=0xb7b7b7,
 		bg_alpha=0.2,
-		fg_colour=0x4a89a7,
+		fg_colour=0x2c2c2c,
 		fg_alpha=1.0,
 		x=165, y=170,
 		radius=116,
@@ -183,7 +200,7 @@ settings_table = {
 		max=100,
 		bg_colour=0xffffff,
 		bg_alpha=0.5,
-		fg_colour=0x46a646,
+		fg_colour=0xffffff,
 		fg_alpha=0.6,
 		x=165, y=170,
 		radius=95,
@@ -196,15 +213,19 @@ settings_table = {
 
 clock_r=125
 
+
+
 clock_x=165
 clock_y=170
+
+
 
 clock_colour=0xffffff
 clock_alpha=0.5
 
 
---show_seconds=true
-show_seconds=false
+
+show_seconds=true
 
 require 'cairo'
 
