@@ -4,7 +4,7 @@
 
 InfinitySVG-Mail is a theme for the "conky" system monitor for X. It is based on the InfinitySVG theme by Eric Weik.
 
-![InfinitySVG-Mail screenshot](https://github.com//PabloAng/ConkyInfinitySVG/raw/master/images/InfinityMail-screenshot.png)
+![InfinitySVG-Mail screenshot](https://raw.github.com/PabloAng/ConkyInfinitySVG/master/images/InfinityMail-screenshot.png)
 
 
 ## Acknowledgements
