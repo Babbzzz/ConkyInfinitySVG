@@ -1,6 +1,7 @@
 ###############################################################################
 #	Conky Theme	: InfinitySVG
 #
+#	Current Update by:					Abhilash Anandan
 #	Updates and SVG by:					Pablo Angelani
 #	Original Updates Infinity and SVG:	Eric Weik
 #	Original Infinity theme by:			Harshit Yadav
@@ -52,9 +53,9 @@ text_buffer_size 2048
 #########################################
 
 # Allow conky to handle transparency -- all or nothing
-#own_window yes
-#own_window_type conky
-#own_window_transparent yes
+own_window yes
+own_window_type conky
+own_window_transparent yes
 
 # Allow compiz to handle transparency manually (you will need to add Conky to compiz)
 own_window yes
@@ -71,16 +72,15 @@ own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
 #own_window_argb_value 70	# make the background semi-transparent
 
 
-## This Resolution is set according to the sreen resolution of 1360x768
-## Adjust Accoring to yours
+## This Resolution is set according to the sreen resolution of 1440x900
 
-minimum_size 1360 576
-maximum_width 1366
+minimum_size 1440 900
+maximum_width 1440
 
 #alignment top_left
 alignment top_right
-gap_x 0
-gap_y 0
+gap_x 10
+gap_y 50
 
 
 #########################################
@@ -89,16 +89,16 @@ gap_y 0
 border_inner_margin 0
 border_outer_margin 0
 
-draw_shades no
+draw_shades yes
 draw_outline no
 draw_borders no
 draw_graph_borders no
 
 ## Text settings
-use_spacer yes
+use_spacer no
 use_xft yes
 xftfont caviar dreams:size=8
-xftalpha 0.5
+xftalpha 2
 
 uppercase no
 
@@ -310,42 +310,39 @@ lua_draw_hook_pre clock_rings
 
 
 
-## Adjust these fields according to the your screen size i have modded them for 1366X768
+## Adjust these fields according to the your screen size I have modded them for 1440X900
 
 TEXT
 ## Date
-${offset 600}${color}${font GE Inspira:pixelsize=120}${time %H:%M}${font}${voffset -84}${voffset 10}${color8}${font GE Inspira:pixelsize=42}${time %d} ${voffset -15}${color}${font GE Inspira:pixelsize=22}${exec echo $(echo $(date +%B) | cut -c1 | tr '[a-z]' '[A-Z]')$(echo $(date +%B) | cut -c2-)} ${time %Y}${font}
-${voffset 124}${offset 350}${font GE Inspira:pixelsize=54}${exec echo $(echo $(date +%A) | cut -c1 | tr '[a-z]' '[A-Z]')$(echo $(date +%A) | cut -c2-)}${font}
-## 
-${offset 620}${voffset -100}${font Ubuntu:pixelsize=12}${color8}HD ${offset 9}${color 4a89a7}${exec df -h | grep "/dev/sd*"  | awk '{ SUM += $3} END { print SUM "Gib" }'} / ${exec df -h | grep "/dev/sd*"  | awk '{ SUM += $2} END { print SUM "Gib" }'}${offset 30}${color8}RAM ${offset 9}${color 4a89a7}$mem / $memmax${offset 30}${color8}CPU1 ${offset 9}${color3}${cpu cpu0}%
-${offset 955}${color8}CPU2 ${offset 9}${color3}${cpu cpu1}%
-${offset 980}${color8}CPU3 ${offset 9}${color3}${cpu cpu2}%
-${voffset -5}${offset 290}${color}${hr 2}
+${offset 280}${color}${font GE Inspira:pixelsize=100}${time %H:%M}${font}${voffset -84}${voffset 5}${color8}${font GE Inspira:pixelsize=42}${time %d} ${voffset -15}${color}${font GE Inspira:pixelsize=22}${exec echo $(echo $(date +%B) | cut -c1 | tr '[a-z]' '[A-Z]')$(echo $(date +%B) | cut -c2-)} ${time %Y}${font}
+${voffset 124}${offset 350}${font GE Inspira:pixelsize=54}${exec echo $(echo $(date +%A) | cut -c1 | tr '[a-z]' '[A-Z]')$(echo $(date +%A) | cut -c2-)}${font} 
+${offset 620}${voffset -100}${font Ubuntu:pixelsize=12}${color8}HD ${offset 9}${color 4a89a7}${exec df -h | grep "/dev/sd*"  | awk '{ SUM += $3} END { print SUM "GB" }'} / ${exec df -h | grep "/dev/sd*"  | awk '{ SUM += $2} END { print SUM "GB" }'}${offset 30}${color8}RAM ${offset 9}${color 4a89a7}$mem / $memmax${offset 30}${color8}CPU1 ${offset 9}${color3}${cpu cpu0}%${offset 20}${color8}CPU2 ${offset 9}${color3}${cpu cpu1}%
+${voffset -5}${offset 300}${color}${hr 2}
 ${image ~/.conky/background.png}
 
 ##WEATHER 
-${voffset -90}
-${execi 300 curl -s "http://weather.yahooapis.com/forecastrss?w=12813015&u=c" -o ~/.cache/weather.xml}
-${offset 1110}${font Open Sans Light:size=15}${color 000000}${execi 300 grep "yweather:location" ~/.cache/weather.xml | grep -o "city=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}, ${execi 300 grep "yweather:location" ~/.cache/weather.xml | grep -o "country=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${font}
-${font Open Sans Light:size=70}${color}${alignr}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}°${font}${voffset -35}
+${voffset -85}
+${execi 300 curl -s "http://weather.yahooapis.com/forecastrss?w=2295426&u=c" -o ~/.cache/weather.xml}
+${offset 1210}${font Open Sans Light:size=15}${color}${execi 300 grep "yweather:location" ~/.cache/weather.xml | grep -o "city=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"} ${execi 300 grep "yweather:location" ~/.cache/weather.xml | grep -o "country=\"[^\"]*\"" | #grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${font}
+${font Open Sans Light:size=70}${color}${alignr}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}°${font}${voffset -62}
 ${execi 300 cp -f ~/.conky/scripts/weather/$(grep "yweather:condition" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*").png ~/.cache/weather.png}
 
-${offset 1055}${font Ubuntu:pixelsize=14}${color}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | ~/.conky/scripts/weather/traductor.py | tr '[a-z]' '[A-Z]'}
-${voffset -25}
+${offset 1089}${font Ubuntu:pixelsize=14}${color}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | ~/.conky/scripts/weather/traductor.py | tr '[a-z]' '[A-Z]'}
+${voffset 22}
 
 ${offset 1085}${font Ubuntu:pixelsize=12}${color}${execi 300 grep "yweather:wind" ~/.cache/weather.xml | grep -o "speed=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${execi 300 grep "yweather:units" ~/.cache/weather.xml | grep -o "speed=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}
 ${offset 1085}${font Ubuntu:pixelsize=12}${execi 300 grep "yweather:atmosphere" ~/.cache/weather.xml | grep -o "humidity=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}%
 ${image ~/.cache/weather.png -p 1055,190 -s 60x60}
-${image ~/.conky/scripts/weather/wind.png -p 1055,285 -s 15x15}
-${image ~/.conky/scripts/weather/humidity.png -p 1055,305 -s 15x15}
+${image ~/.conky/scripts/weather/wind.png -p 1055,249 -s 15x15}
+${image ~/.conky/scripts/weather/humidity.png -p 1055,267 -s 15x15}
 ${voffset -175}
 ###
 
 ##FILE SYSTEM
-${offset 120}${voffset 198}${font Monospace:size=11:style=Bold}${color 4a89a7}root:${tab 4}${font Santana:size=11}${color}${fs_used /}/${fs_size /}
-${offset 120}${voffset 7}${color6}${font Monospace:size=11:style=Bold}home:${tab 4}${font Santana:size=11}${color}${fs_used /home}/${fs_size /home}$font
+${offset 120}${voffset 240}${font Monospace:size=11:style=Bold}${color 4a89a7}root:${tab 4}${font Santana:size=10}${color}${fs_used /}/${fs_size /}
+${offset 120}${voffset 7}${color6}${font Monospace:size=11:style=Bold}home:${tab 4}${font Santana:size=10}${color}${fs_used /home}/${fs_size /home}$font
 ${offset 120}${voffset 7}${color4}${font Monospace:size=11:style=Bold}swap:${tab 4}${font Santana:size=10}${color} ${swap}/${swapfree}
-${offset 500}${voffset -110}${font Santana:size=10}${color}Linux ${kernel} kernel
+${offset 500}${voffset -105}${font Santana:size=10}${color}Linux ${kernel} kernel
 ${offset 500}${font Monospace:size=9}${color 4a89a7}Uptime:${color}${uptime}
 ${offset 755}${voffset -110}${font Santana:size=12:style=Bold}${color}${exec whoami}@${nodename}
 ${offset 755}${font Monospace:size=9}${color6} Top (CPU):${tab 2}${offset 9}${color}${top name 5} ${top cpu 5}
@@ -353,12 +350,12 @@ ${offset 755}${font Monospace:size=9}${color6} Top (RAM):${tab 2}${offset 9}${co
 ${offset 635}${voffset 150}${color}${font Santana:size=11:style=Bold}IP Address : ${addr eth0}
 ${offset 635}${color}${font Monospace:size=9}TCP Connections: ${tcp_portmon 1 65535 count}
 ${offset 635}${font Monospace:size=9}${color4}Down: ${offset 9}${color}${downspeed eth0}/s ${tab 4}${color4}Up:${tab 4}${color}${upspeed eth0} /s
-${offset 830}${voffset -155}${color}${font Santana:size=11:style=Bold}Gmail:${color} 'YOUR EMAIL DOMAIN HERE'
+${offset 830}${voffset -155}${color}${font Santana:size=11:style=Bold}Gmail:${color} 'abhilash24692@gmail.com'
 ${offset 830}${font Monospace:size=9}${color7}${execi 150 ~/.conky/scripts/mail/gmail.py}
 # Positioning eset for static text examples below
 ${voffset 60}
 # Static text example: Logo
-${offset 120}${color}${font Ubuntu:pixelsize=20}${color7}'YOUR OS'${color} 'YOUR OS VERSION'
+${offset 120}${color}${font Ubuntu:pixelsize=20}${color7}CrunchBang ${color}11
 # Static text example: Multi-line
 #${offset 120}$font${color 6f6f6f}random text can go here
 #${offset 120}and here...
